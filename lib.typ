@@ -161,3 +161,28 @@
 
   body
 }
+
+
+// ============================================
+// BMFTR Note
+// ============================================
+
+#let hm-bmftr-note(language: "en") = {
+  if language == "de" {
+    place(bottom + right, dx: 50pt, dy: 50pt)[
+      #stack(spacing: 0pt, align(left)[#text(size: 8pt)[Gefördert durch]], box(
+        width: 6cm,
+      )[
+        #image("img/BMFTR_Logo_DE.svg", width: 6cm)
+      ])
+    ]
+  } else if language == "en" {
+    place(bottom + right, dx: 50pt, dy: 50pt)[
+      #stack(spacing: 0pt, align(left)[#text(size: 8pt)[Funded by]], box(
+        width: 6cm,
+      )[
+        #image("img/BMFTR_Logo_EN.svg", width: 6cm)
+      ])
+    ]
+  }
+}
