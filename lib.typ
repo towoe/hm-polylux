@@ -249,3 +249,41 @@
     left-content, right-content,
   )
 ]
+
+// ============================================
+// Section Support
+// ===========================================
+
+#let page-progress = toolbox.progress-ratio(ratio => {
+  set grid.cell(inset: (y: .05em))
+  grid(
+    columns: (ratio * 100%, 1fr),
+    grid.cell(fill: primary-color)[],
+    grid.cell(fill: hm-light-gray)[],
+  )
+})
+
+#let new-section(name) = slide({
+  set page(header: none, footer: none)
+  show: pad.with(x: 10%, y: 25%)
+  set text(size: 22pt, weight: "bold")
+  name
+  toolbox.register-section(name)
+  page-progress
+})
+
+#let toc = toolbox.all-sections((sections, _cur) => {
+  list(..sections)
+})
+
+#let slide-toc(title: "Content") = slide[
+  #set page(footer: none)
+  #heading[#title]
+  #text(size: 22pt, weight: "regular")[
+    #grid(
+      columns: (1fr, 3fr, 2fr),
+      rows: (5fr, 1fr),
+      [], align(horizon, toc),
+    )
+  ]
+]
