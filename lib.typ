@@ -186,3 +186,66 @@
     ]
   }
 }
+
+// ============================================
+// Helper Components
+// ===========================================
+
+#let footer-check(hide: true) = {
+  if hide == false {
+    hm-footer()
+  }
+}
+
+// ============================================
+// Slide Layouts
+// ============================================
+
+#let slide-vertical(title, body, hide-footer: false) = slide[
+  #set page(footer: footer-check(hide: hide-footer))
+  #heading[#title]
+  #align(horizon)[
+    #body
+  ]
+]
+
+#let slide-centered(title, body, hide-footer: false) = slide[
+  #set page(footer: footer-check(hide: hide-footer))
+  #heading[#title]
+  #align(center + horizon)[
+    #body
+  ]
+]
+
+#let slide-split-2(title, left, right, hide-footer: false) = slide[
+  #set page(footer: footer-check(hide: hide-footer))
+  #heading[#title]
+  #grid(
+    columns: (1fr, 1fr),
+    rows: 1fr,
+    left, right,
+  )
+]
+
+#let slide-split-1-2(
+  title,
+  left-content,
+  right-content,
+  bg-color: white,
+  hide-footer: false,
+) = slide[
+  #set page(
+    background: place(left + top, box(
+      width: 30%,
+      height: 100%,
+      fill: bg-color,
+    )),
+  )
+  #set page(footer: footer-check(hide: hide-footer))
+  #heading[#title]
+  #grid(
+    columns: (1fr, 2fr),
+    rows: 1fr,
+    left-content, right-content,
+  )
+]
