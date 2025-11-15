@@ -76,7 +76,9 @@
       grid(
         columns: (1fr, 6fr, 1fr),
 
-        align(left)[Logo],
+        align(left)[
+          #image("img/HM_Logo.svg", height: 22pt)
+        ],
         [#text(weight: "bold")[#m.title #if m.subtitle != none {
               [\- #m.subtitle]
             }] #linebreak()
