@@ -33,6 +33,10 @@
   #context {
     let m = meta-state.get()
 
+    place(top + right)[
+      #image("img/HM_Logo_Text_red.pdf", height: 2.5cm)
+    ]
+
     place(left + horizon, dx: 25%, dy: 10%, {
       text(size: 22pt, weight: "bold", fill: black)[#upper(m.title)]
 
