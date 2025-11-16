@@ -267,7 +267,7 @@
   grid(
     columns: (ratio * 100%, 1fr),
     grid.cell(fill: primary-color)[],
-    grid.cell(fill: hm-light-gray)[],
+    grid.cell(fill: primary-color.luma().lighten(50%))[],
   )
 })
 
