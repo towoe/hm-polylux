@@ -26,7 +26,13 @@
 // Title slide
 // ============================================
 
-#let title-slide() = slide[
+#let title-slide(
+  title: [],
+  subtitle: [],
+  author: [],
+  institute: [],
+  date: [],
+) = slide[
   #set align(center + horizon)
   #set text(fill: text-color)
 
@@ -38,7 +44,13 @@
     ]
 
     place(left + horizon, dx: 25%, dy: 10%, {
-      text(size: 22pt, weight: "bold", fill: black)[#upper(m.title)]
+      let override-or-meta(value, meta-value) = if value == [] {
+        meta-value
+      } else { value }
+
+      text(size: 22pt, weight: "bold", fill: black)[
+        #upper(override-or-meta(title, m.title))
+      ]
 
       v(0.5em)
 
@@ -47,23 +59,26 @@
         fill: black,
         style: "italic",
         weight: "light",
-      )[#m.subtitle]
-      linebreak()
+      )[
+        #override-or-meta(subtitle, m.subtitle)
+        #linebreak()
+      ]
 
-      if m.author != none {
-        linebreak()
-        text(size: 16pt, weight: "light", fill: black)[#m.author]
-      }
+      text(
+        size: 16pt,
+        weight: "light",
+        fill: black,
+      )[
+        #linebreak()
+        #override-or-meta(author, m.author)]
 
-      if m.institute != none {
-        linebreak()
-        text(size: 16pt, weight: "light")[#m.institute]
-      }
+      text(size: 16pt, weight: "light")[
+        #linebreak()
+        #override-or-meta(institute, m.institute)]
 
-      if m.date != none {
-        linebreak()
-        text(size: 14pt, weight: "light")[#m.date]
-      }
+      text(size: 14pt, weight: "light")[
+        #linebreak()
+        #override-or-meta(date, m.date)]
     })
   }
 ]
