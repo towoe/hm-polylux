@@ -32,6 +32,7 @@
   author: [],
   institute: [],
   date: [],
+  uppercase-title: true,
 ) = slide[
   #set align(center + horizon)
   #set text(fill: text-color)
@@ -49,7 +50,9 @@
       } else { value }
 
       text(size: 22pt, weight: "bold", fill: black)[
-        #upper(override-or-meta(title, m.title))
+        #if uppercase-title { upper(override-or-meta(title, m.title)) } else {
+          override-or-meta(title, m.title)
+        }
       ]
 
       v(0.5em)
