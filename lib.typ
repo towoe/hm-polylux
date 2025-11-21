@@ -337,7 +337,7 @@
   #heading[#title]
   #text(size: 22pt, weight: "light")[
     #grid(
-      columns: (1fr, 3fr, 2fr),
+      columns: (1fr, 7fr, 2fr),
       rows: (5fr, 1fr),
       [], align(horizon, toc),
     )
